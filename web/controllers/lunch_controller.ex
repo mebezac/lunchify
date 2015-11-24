@@ -5,15 +5,6 @@ defmodule Lunchify.LunchController do
 
   plug :scrub_params, "lunch" when action in [:create, :update]
 
-  def random_lunch(conn, _params) do
-    :random.seed(:os.timestamp)
-    lunch = Repo.all(Lunch) |> Enum.random
-    json(conn, %{
-      response_type: "in_channel",
-      text: lunch.body
-      })
-  end
-
   def index(conn, _params) do
     lunches = Repo.all(Lunch)
     render(conn, "index.html", lunches: lunches)
