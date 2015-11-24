@@ -1,3 +1,4 @@
+[![Circle CI](https://circleci.com/gh/mebezac/lunchify.svg?style=svg)](https://circleci.com/gh/mebezac/lunchify)
 # Lunchify
 
 To start your Phoenix app:
