@@ -18,6 +18,7 @@ defmodule Lunchify.Router do
 
     get "/", PageController, :index
     get "/random_lunch", LunchController, :random_lunch
+    get "/slack", SlackController, :index
     resources "/lunches", LunchController
   end
 
