@@ -9,7 +9,7 @@ defmodule Lunchify.LunchController do
     :random.seed(:os.timestamp)
     lunch = Repo.all(Lunch) |> Enum.random
     json(conn, %{
-      repsonse_type: "in_channel",
+      response_type: "in_channel",
       text: lunch.body
       })
   end
