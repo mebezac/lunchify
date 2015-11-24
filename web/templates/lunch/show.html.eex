@@ -1,0 +1,18 @@
+<h2>Show lunch</h2>
+
+<ul>
+
+  <li>
+    <strong>Tags:</strong>
+    <%= @lunch.tags %>
+  </li>
+
+  <li>
+    <strong>Body:</strong>
+    <%= @lunch.body %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: lunch_path(@conn, :edit, @lunch) %>
+<%= link "Back", to: lunch_path(@conn, :index) %>

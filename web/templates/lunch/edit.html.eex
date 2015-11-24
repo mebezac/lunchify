@@ -1,0 +1,6 @@
+<h2>Edit lunch</h2>
+
+<%= render "form.html", changeset: @changeset,
+                        action: lunch_path(@conn, :update, @lunch) %>
+
+<%= link "Back", to: lunch_path(@conn, :index) %>
