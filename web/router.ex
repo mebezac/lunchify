@@ -17,7 +17,7 @@ defmodule Lunchify.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
-    get "/random_lunch", LunchController, :random_lunch
+    get "/slack", SlackController, :index
     resources "/lunches", LunchController
   end
 
