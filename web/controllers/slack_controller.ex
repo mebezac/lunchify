@@ -6,6 +6,7 @@ defmodule Lunchify.SlackController do
   def index(conn, %{"text" => "help" <> _rest}) do
     help = """
       /lunchify - Get a random lunch
+      /lunchify find <id> - Get specific lunch by id
       /lunchify help - This message
       /lunchify add <quote> - Add a lunch quote
       /lunchify count - Report on lunch count
