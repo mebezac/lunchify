@@ -40,4 +40,22 @@ defmodule Lunchify.SlackControllerTest do
     %{"text" => text} = json_response(conn, 200)
     assert text =~ "lunch"
   end
+
+  test "returns the chosen lunch by id", %{conn: conn} do
+    Repo.insert(%Lunch{body: "First lunch"})
+    {:ok, lunch} = Repo.insert(%Lunch{body: "Second lunch"})
+
+    conn = get conn, slack_path(conn, :index), %{text: "find #{lunch.id}"}
+    %{"text" => text} = json_response(conn, 200)
+    assert text =~ "Second"
+  end
+
+  test "returns error message if no lunch with id found", %{conn: conn} do
+    Repo.insert(%Lunch{body: "First lunch"})
+    {:ok, lunch} = Repo.insert(%Lunch{body: "Second lunch"})
+
+    conn = get conn, slack_path(conn, :index), %{text: "find #{lunch.id + 1}"}
+    %{"text" => text} = json_response(conn, 200)
+    assert text =~ "No Lunch "
+  end
 end

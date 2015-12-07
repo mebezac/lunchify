@@ -38,6 +38,21 @@ defmodule Lunchify.SlackController do
     end
   end
 
+  def index(conn, %{"text" => "find " <> id}) do
+    lunch = Repo.get(Lunch, id)
+    if is_nil(lunch) do
+      conn
+      |> json(%{"text": "No Lunch found with id #{id}"})
+    else
+      conn
+      |> json(%{
+          response_type: "in_channel",
+          text: lunch.body
+        })
+    end
+
+  end
+
   # Default is to return a random lunch
   def index(conn, _params) do
     :random.seed(:os.timestamp)
