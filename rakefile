@@ -1,0 +1,6 @@
+desc "Pings dyno to keep a dyno alive"
+task :dyno_ping do
+  require "net/http"
+  uri = URI('http://zac-lunchify.herokuapp.com/')
+  Net::HTTP.get_response(uri)
+end
